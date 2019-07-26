@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Locataire implements Serializable {
@@ -20,6 +21,14 @@ public class Locataire implements Serializable {
     //!!!!!only use it for very small collections !!!!!!!!
     @ElementCollection
     private List<Long> numTel;
+
+    // relation with the location
+// it is one to many mapping with foreign key association
+    //Locataire should declare that relationship is one to many,
+    // and Location should declare that relationship from its end is many to one.
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name = "LOCATAIRE_ID")
+    private Set<Location> locationSet;
 
     public Locataire(Long cin, String fullName, List<Long> numTel) {
         this.cin = cin;

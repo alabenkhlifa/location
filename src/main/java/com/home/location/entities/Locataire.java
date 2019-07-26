@@ -3,6 +3,8 @@ package com.home.location.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
+
 @Entity
 public class Locataire implements Serializable {
     @Id
@@ -19,6 +21,64 @@ public class Locataire implements Serializable {
     @ElementCollection
     private List<Long> numTel;
 
+    public Locataire(Long cin, String fullName, List<Long> numTel) {
+        this.cin = cin;
+        this.fullName = fullName;
+        this.numTel = numTel;
+    }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getCin() {
+        return cin;
+    }
+
+    public void setCin(Long cin) {
+        this.cin = cin;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public List<Long> getNumTel() {
+        return numTel;
+    }
+
+    public void setNumTel(List<Long> numTel) {
+        this.numTel = numTel;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Locataire)) return false;
+        Locataire locataire = (Locataire) o;
+        return id.equals(locataire.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Locataire{" +
+                "id=" + id +
+                ", cin=" + cin +
+                ", fullName='" + fullName + '\'' +
+                ", numTel=" + numTel +
+                '}';
+    }
 }

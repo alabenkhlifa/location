@@ -32,4 +32,4 @@ build/
 
 ### Configuration ###
 
-/src/main/resources/application.properties
+application.properties

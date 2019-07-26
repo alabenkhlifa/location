@@ -26,8 +26,11 @@ public class Locataire implements Serializable {
 // it is one to many mapping with foreign key association
     //Locataire should declare that relationship is one to many,
     // and Location should declare that relationship from its end is many to one.
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name = "LOCATAIRE_ID")
+
+    //“cascade=CascadeType.ALL” :any change happened on Locataire must cascade to Location as well
+    //The mappedBy property is what we use to tell Hibernate
+    // which variable we are using to represent the Locataire class in the location class.
+    @OneToMany(cascade=CascadeType.ALL,mappedBy = "locataire")
     private Set<Location> locationSet;
 
     public Locataire(Long cin, String fullName, List<Long> numTel) {

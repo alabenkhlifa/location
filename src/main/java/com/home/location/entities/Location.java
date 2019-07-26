@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 
 //location , locataire et paiement
@@ -31,13 +32,14 @@ public class Location {
     @Column(name = "dateFin")
     private java.time.LocalDate dateFin;
 
-    //relation with the locataire
+    //relation with the locataire: un locataire peu avoir plusieurs locations
     @ManyToOne
+    @JoinColumn(name = "LOCATAIRE_ID")  //optional: hibernate will generate one: references the mapped column
     private Locataire locataire;
 
-    @OneToMany
-    @JoinColumn(name="LOCATION_ID")
-    private Paiement paiement;
+
+    @OneToMany(mappedBy = "location")
+    private Set<Paiement> paiementSet;
 
     @Override
     public boolean equals(Object o) {

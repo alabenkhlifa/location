@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -39,7 +40,7 @@ public class Location {
 
 
     @OneToMany(mappedBy = "location")
-    private Set<Paiement> paiementSet;
+    private Set<Paiement> paiementSet= new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

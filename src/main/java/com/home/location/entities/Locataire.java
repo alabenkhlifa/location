@@ -2,15 +2,13 @@ package com.home.location.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Locataire implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id", updatable = false, nullable=false)
+    @Column(name="id", nullable=false)
     private Long id;
     @Column(name = "cin")
     private Long cin;
@@ -20,7 +18,7 @@ public class Locataire implements Serializable {
     //dwarbacks: not the most efficient option to store a list of value types in the database
     //!!!!!only use it for very small collections !!!!!!!!
     @ElementCollection
-    private List<Long> numTel;
+    private List<Long> numTel= new ArrayList<>();
 
     // relation with the location
 // it is one to many mapping with foreign key association
@@ -31,7 +29,7 @@ public class Locataire implements Serializable {
     //The mappedBy property is what we use to tell Hibernate
     // which variable we are using to represent the Locataire class in the location class.
     @OneToMany(cascade=CascadeType.ALL,mappedBy = "locataire")
-    private Set<Location> locationSet;
+    private Set<Location> locationSet= new HashSet<>();
 
     public Locataire(Long cin, String fullName, List<Long> numTel) {
         this.cin = cin;

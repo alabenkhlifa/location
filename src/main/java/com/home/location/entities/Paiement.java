@@ -35,7 +35,7 @@ public class Paiement implements Serializable {
 
 //dima eli mn jihet l mani houwa eli ya5ou l forein key
     @ManyToOne
-    @JoinColumn(name = "PAIEMENT_ID")
+    @JoinColumn(name = "LOCATION_ID")
     private Location location;
 
     @Override

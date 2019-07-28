@@ -8,17 +8,17 @@ import java.util.*;
 public class Locataire implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id", nullable=false)
+    @Column(name = "id", nullable = false)
     private Long id;
-    @Column(name = "cin")
-    private Long cin;
+    @Column(name = "cin", length = 8)
+    private String cin;
     @Column(name = "fullName")
     private String fullName;
     // Persisting Collections of basic Java types: equivalent to an entity with on-to-may association
     //dwarbacks: not the most efficient option to store a list of value types in the database
     //!!!!!only use it for very small collections !!!!!!!!
     @ElementCollection
-    private List<Long> numTel= new ArrayList<>();
+    private List<String> numTel = new ArrayList<>();
 
     // relation with the location
 // it is one to many mapping with foreign key association
@@ -28,14 +28,25 @@ public class Locataire implements Serializable {
     //“cascade=CascadeType.ALL” :any change happened on Locataire must cascade to Location as well
     //The mappedBy property is what we use to tell Hibernate
     // which variable we are using to represent the Locataire class in the location class.
-    @OneToMany(cascade=CascadeType.ALL,mappedBy = "locataire")
-    private Set<Location> locationSet= new HashSet<>();
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "locataire")
+//    private Set<Location> locationSet = new HashSet<>();
 
-    public Locataire(Long cin, String fullName, List<Long> numTel) {
+    public Locataire(String cin, String fullName, List<String> numTel) {
         this.cin = cin;
         this.fullName = fullName;
         this.numTel = numTel;
     }
+
+    public Locataire() {
+    }
+
+//    public Set<Location> getLocationSet() {
+//        return locationSet;
+//    }
+
+//    public void setLocationSet(Set<Location> locationSet) {
+//        this.locationSet = locationSet;
+//    }
 
     public Long getId() {
         return id;
@@ -45,11 +56,11 @@ public class Locataire implements Serializable {
         this.id = id;
     }
 
-    public Long getCin() {
+    public String getCin() {
         return cin;
     }
 
-    public void setCin(Long cin) {
+    public void setCin(String cin) {
         this.cin = cin;
     }
 
@@ -61,11 +72,11 @@ public class Locataire implements Serializable {
         this.fullName = fullName;
     }
 
-    public List<Long> getNumTel() {
+    public List<String> getNumTel() {
         return numTel;
     }
 
-    public void setNumTel(List<Long> numTel) {
+    public void setNumTel(List<String> numTel) {
         this.numTel = numTel;
     }
 

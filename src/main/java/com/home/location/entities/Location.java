@@ -23,7 +23,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class Location {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false)
     private Long id;
     @Column(name = "dateDebut")

@@ -14,6 +14,8 @@ import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -51,8 +53,8 @@ public class LocationApplication {
 			// it will persist the locataire entity with the location entity
 
 			Location location = new Location();
-			location.setDateDebut(LocalDateTime.now());
-			location.setDateFin(LocalDateTime.now());
+			location.setDateDebut(LocalDateTime.now(ZoneId.of("GMT+02:00")));
+			location.setDateFin(LocalDateTime.now(ZoneId.of("GMT+02:00")));
 			// The locataire will be saved to the database
 			location.setLocataire(locataire);
 			locationRepository.save(location);
@@ -61,7 +63,7 @@ public class LocationApplication {
 			Paiement paiement = new Paiement();
 			paiement.setLocation(location);
 			paiement.setMontant(50L);
-			paiement.setDatePaiement(LocalDateTime.now());
+			paiement.setDatePaiement(LocalDateTime.now(ZoneId.of("GMT+02:00")));
 			paiementRepository.save(paiement);
 			log.info(paiement.toString());
 		};

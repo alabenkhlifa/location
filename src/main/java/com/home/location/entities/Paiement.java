@@ -18,7 +18,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class Paiement implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "paiementDate")
     // Date Type : to save the time along side with the date we use TIMESTAMP

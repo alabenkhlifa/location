@@ -7,7 +7,7 @@ import java.util.*;
 @Entity
 public class Locataire implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "cin", length = 8)

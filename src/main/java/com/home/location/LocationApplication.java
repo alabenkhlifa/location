@@ -36,9 +36,9 @@ public class LocationApplication {
 										LocataireRepository locataireRepository,
 										PaiementRepository paiementRepository) {
 		return args -> {
-			locationRepository.deleteAll();
-			locataireRepository.deleteAll();
 			paiementRepository.deleteAll();
+			locataireRepository.deleteAll();
+			locationRepository.deleteAll();
 
 			Locataire locataire = new Locataire();
 			locataire.setCin("06950455");

@@ -12,4 +12,5 @@ public interface ILocationService {
     void deleteAll();
     List<Location> getAll();
     Location getOneById (Long id) throws LocationNotFoundException;
+    List<Location> getByLocataireId(Long locataireId);
 }

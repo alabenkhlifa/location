@@ -35,8 +35,6 @@ public class Location {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "LOCATAIRE_ID")  //optional: hibernate will generate one: references the mapped column
     private Locataire locataire;
-    @OneToMany(mappedBy = "location")
-    private Set<Paiement> paiementSet = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

@@ -2,7 +2,6 @@ package com.home.location.services;
 
 import com.home.location.entities.Location;
 import com.home.location.exceptions.LocationNotFoundException;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

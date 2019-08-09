@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Service
 // TODO: Make 2 other services with their interfaces and exceptions and checking (like the 'montant' of the 'paiement' must be positive or else throw an exception
 public class LocationServiceImpl implements ILocationService {
 
     private LocationRepository locationRepository;
+
     // Optional , we can remove it and it still works, only for constructor based Dependancy Injection
     @Autowired
     public LocationServiceImpl(LocationRepository repository) {
@@ -35,19 +37,24 @@ public class LocationServiceImpl implements ILocationService {
     }
 
     @Override
-    public List<Location> getAll() {
-        return (List<Location>)locationRepository.findAll();
+    public void deleteById(Long id) {
+        locationRepository.deleteById(id);
     }
 
     @Override
-    public Location getOneById(Long id) throws LocationNotFoundException{
+    public List<Location> getAll() {
+        return (List<Location>) locationRepository.findAll();
+    }
+
+    @Override
+    public Location getOneById(Long id) throws LocationNotFoundException {
 //        the locationRepository.findById returns an optional of location (Optional<Location>), which means a wrapper around the location, we can check if the object inside the optional
 //        if it's null or the optional is empty , we can throw exception like we did here, we use the optional to remove the manual check if object != null
         return locationRepository.findById(id).orElseThrow(LocationNotFoundException::new);
     }
 
     @Override
-    public List<Location> getByLocataireId(Long locataireId){
+    public List<Location> getByLocataireId(Long locataireId) {
         return locationRepository.findByLocataire_Id(locataireId);
     }
 }

@@ -53,10 +53,11 @@ public class LocationApplication {
 			// it will persist the locataire entity with the location entity
 
 			Location location = new Location();
-			location.setDateDebut(LocalDateTime.now(ZoneId.of("GMT+02:00")));
-			location.setDateFin(LocalDateTime.now(ZoneId.of("GMT+02:00")));
+			location.setDateDebut(LocalDateTime.now(ZoneId.of("GMT+00:00")));
+			location.setDateFin(LocalDateTime.now(ZoneId.of("GMT+00:00")).plusDays(10));
 			// The locataire will be saved to the database
 			location.setLocataire(locataire);
+			location.setColor("#1e90ff");
 			locationRepository.save(location);
 			log.info(location.toString());
 

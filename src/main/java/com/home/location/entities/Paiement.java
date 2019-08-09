@@ -32,7 +32,7 @@ public class Paiement implements Serializable {
     private LocalDateTime datePaiement;
     // = 0L => default value for the attribute, PS : 0L the L stands for Long , because it's of type Long.
     private Long montant = 0L;
-
+    private String type;
     //dima eli mn jihet l mani houwa eli ya5ou l forein key
     @ManyToOne
     @JoinColumn(name = "LOCATION_ID")

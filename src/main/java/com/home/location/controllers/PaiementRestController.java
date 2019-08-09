@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/paiement")
+@CrossOrigin("*")
 public class PaiementRestController {
 
     private IPaiementService paiementService;

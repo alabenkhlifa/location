@@ -30,22 +30,9 @@ public class Location {
     private LocalDateTime dateDebut;
     @Column(name = "dateFin")
     private LocalDateTime dateFin;
-
+    private String color;
     //relation with the locataire: un locataire peu avoir plusieurs locations
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "LOCATAIRE_ID")  //optional: hibernate will generate one: references the mapped column
     private Locataire locataire;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Location)) return false;
-        Location location = (Location) o;
-        return getId().equals(location.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
 }

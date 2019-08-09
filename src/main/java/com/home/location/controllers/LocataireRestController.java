@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/locataire")
+@CrossOrigin("*")
 public class LocataireRestController {
 
     private ILocataireService locataireService;

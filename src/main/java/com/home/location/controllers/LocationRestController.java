@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/location")
+@CrossOrigin("*")
 public class LocationRestController {
 
     private ILocationService locationService;
@@ -32,6 +33,12 @@ public class LocationRestController {
     @DeleteMapping("/")
     public ResponseEntity deleteAll() {
         locationService.deleteAll();
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteById(@PathVariable Long id) {
+        locationService.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
